@@ -8,11 +8,27 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <RelativeLayout
+
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabCollaps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:rippleColor="@color/fabRippleCLolor"
+            android:backgroundTint="@color/fabCLolor"
+            app:srcCompat="@drawable/ic_collaps" />
+    </RelativeLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -20,7 +36,8 @@
         android:layout_height="wrap_content"
         app:itemBackground="@drawable/selector_tab"
         app:menu="@menu/navigation"
-        app:itemIconSize="30dp"
-        android:theme="@style/BottomNavigationTheme"/>
+        android:theme="@style/BottomNavigationTheme">
+
+    </android.support.design.widget.BottomNavigationView>
 
 </LinearLayout>
