@@ -1,10 +1,8 @@
-package com.a.dev.fixingthemotobikes.tools;
+package com.a.dev.MyApplication.tools;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
-import com.a.dev.fixingthemotobikes.MainActivity;
 
 import java.util.ArrayList;
 

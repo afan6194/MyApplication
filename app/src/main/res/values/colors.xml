@@ -8,5 +8,9 @@
     <color name="colorTabNonSeleted">#c8e3ff</color>
     <color name="fabCLolor">#278be3</color>
     <color name="fabRippleCLolor">#75bfff</color>
+    <color name="colorFabAdd">#ff0026</color>
+    <color name="colorFabAddRipple">#ff778b</color>
+    <color name="colorFabRefresh">#00c261</color>
+    <color name="colorFabRefreshRipple">#5ac28e</color>
 
 </resources>

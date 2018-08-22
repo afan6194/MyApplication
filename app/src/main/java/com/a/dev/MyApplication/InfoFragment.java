@@ -1,4 +1,4 @@
-package com.a.dev.fixingthemotobikes;
+package com.a.dev.MyApplication;
 
 import android.content.Context;
 import android.net.Uri;
