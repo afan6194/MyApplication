@@ -4,4 +4,13 @@
     <string name="hello_blank_fragment">Halo ragment Kosong</string>
     <string name="tabViewMap">Lihat Peta</string>
     <string name="tabListLocation">Daftar Lokasi</string>
+    <string name="searchTitle">Pencarian</string>
+
+    <string-array name="query_suggestions">
+        <item>Android</item>
+        <item>iOS</item>
+        <item>SCALA</item>
+        <item>Ruby</item>
+        <item>JavaScript</item>
+    </string-array>
 </resources>
