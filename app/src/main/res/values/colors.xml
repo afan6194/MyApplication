@@ -12,5 +12,6 @@
     <color name="colorFabAddRipple">#ff778b</color>
     <color name="colorFabRefresh">#00c261</color>
     <color name="colorFabRefreshRipple">#5ac28e</color>
-
+    <color name="colorFabShadow">#d4d4d4</color>
+    <color name="colorTransBg">#26000000</color>
 </resources>

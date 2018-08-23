@@ -1,5 +1,6 @@
 package com.a.dev.MyApplication;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,20 +14,17 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     private FrameLayout fragment_container;
     private FloatingActionButton fabExpand;
+    private FloatingActionButton fabCollaps;
     private FloatingActionButton fabAdd;
     private FloatingActionButton fabRefresh;
 
-    private Boolean isFabExpand = false;
-    private Animation fab_expand;
-    private Animation fab_collaps;
-    private Animation rotate_forward;
-    private Animation rotate_backward;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,42 +36,56 @@ public class MainActivity extends AppCompatActivity {
 
         fragment_container = findViewById(R.id.fragment_container);
         fabExpand = findViewById(R.id.fabExpand);
+        fabCollaps = findViewById(R.id.fabCollaps);
         fabAdd = findViewById(R.id.fabAdd);
         fabRefresh = findViewById(R.id.fabRefresh);
 
-        fab_expand = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_expand);
-        fab_collaps = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_collaps);
-        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
-        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_backward);
+
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         switchToListMarkerFragmen();
 
-        View.OnClickListener onClick = new View.OnClickListener() {
+        fabExpand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int id = v.getId();
-                switch (id) {
-                    case R.id.fabExpand:
-                            animateFAB();
-                        break;
-                    case R.id.fabAdd:
-
-                        Log.d("Fab", "Fab 1");
-                        break;
-                    case R.id.fabRefresh:
-
-                        Log.d("Fab", "Fab 2");
-                        break;
-                
-                }
+                fabAdd.setVisibility(View.VISIBLE);
+                fabRefresh.setVisibility(View.VISIBLE);
+                fabExpand.animate().rotationBy(180);
+                fabAdd.animate().translationY(-110);
+                fabRefresh.animate().translationY(-220);
+                Log.d("Fab", "close");
+                fabExpand.setVisibility(View.GONE);
+                fabCollaps.setVisibility(View.VISIBLE);
             }
-        };
+        });
 
-        fabExpand.setOnClickListener(onClick);
-        fabAdd.setOnClickListener(onClick);
-        fabRefresh.setOnClickListener(onClick);
+        fabCollaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fabExpand.animate().rotationBy(-180);
+                fabAdd.animate().translationY(0);
+                fabRefresh.animate().translationY(0);
+
+                Log.d("Fab", "open");
+                fabCollaps.setVisibility(View.GONE);
+                fabExpand.setVisibility(View.VISIBLE);
+            }
+        });
+
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Fab", "Fab 1");
+            }
+        });
+        fabRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Fab", "Fab 2");
+            }
+        });
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -91,9 +103,12 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.tab_Info:
                     switchToInfoFragmen();
+                    fabAdd.setAnimation(null);
+                    fabRefresh.setAnimation(null);
                     fabExpand.setVisibility(View.GONE);
-                    fabAdd.setVisibility(View.GONE);
-                    fabRefresh.setVisibility(View.GONE);
+                    fabCollaps.setVisibility(View.GONE);
+                    fabAdd.setVisibility(View.INVISIBLE);
+                    fabRefresh.setVisibility(View.INVISIBLE);
                     return true;
                 default:
                     switchToListMarkerFragmen();
@@ -121,27 +136,4 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.tabInfo));
     }
 
-    public void animateFAB() {
-        if (isFabExpand) {
-
-            fabExpand.startAnimation(rotate_backward);
-            fabAdd.startAnimation(fab_collaps);
-            fabRefresh.startAnimation(fab_collaps);
-            fabAdd.setClickable(false);
-            fabRefresh.setClickable(false);
-            isFabExpand = false;
-            Log.d("Fab", "close");
-
-        } else {
-
-            fabExpand.startAnimation(rotate_forward);
-            fabAdd.startAnimation(fab_expand);
-            fabRefresh.startAnimation(fab_expand);
-            fabAdd.setClickable(true);
-            fabRefresh.setClickable(true);
-            isFabExpand = true;
-            Log.d("Fab", "open");
-
-        }
-    }
 }
