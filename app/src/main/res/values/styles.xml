@@ -46,5 +46,11 @@
     </style>
 
 
+    <integer-array name="fab_menu_item_colors">
+        <!-- A dark Holo shade of red -->
+        <item>@android:color/holo_red_dark</item>
+        <!-- A Holo shade of purple -->
+        <item>@android:color/holo_purple</item>
+    </integer-array>
 
 </resources>

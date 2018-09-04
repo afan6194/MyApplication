@@ -7,6 +7,7 @@ import android.speech.RecognizerIntent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,20 +21,21 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
+
+import io.github.yavski.fabspeeddial.FabSpeedDial;
+import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private MenuItem action_search;
     private FrameLayout fragment_container;
     private MaterialSearchView searchView;
-    private FloatingActionButton fabExpand;
-    private FloatingActionButton fabCollaps;
-    private FloatingActionButton fabAdd;
-    private FloatingActionButton fabRefresh;
+    private FabSpeedDial fabSpeedDial;
 
 
     @Override
@@ -46,12 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragment_container = findViewById(R.id.fragment_container);
         searchView = findViewById(R.id.searchView);
-
-        fabExpand = findViewById(R.id.fabExpand);
-        fabCollaps = findViewById(R.id.fabCollaps);
-        fabAdd = findViewById(R.id.fabAdd);
-        fabRefresh = findViewById(R.id.fabRefresh);
-
+        fabSpeedDial = findViewById(R.id.fabCollapse);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -87,46 +84,23 @@ public class MainActivity extends AppCompatActivity {
         });
         searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
 
-        fabExpand.setOnClickListener(new View.OnClickListener() {
+        fabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
             @Override
-            public void onClick(View v) {
-                fabAdd.setVisibility(View.VISIBLE);
-                fabRefresh.setVisibility(View.VISIBLE);
-                fabExpand.animate().rotationBy(180);
-                fabAdd.animate().translationY(-110);
-                fabRefresh.animate().translationY(-220);
-                Log.d("Fab", "close");
-                fabExpand.setVisibility(View.GONE);
-                fabCollaps.setVisibility(View.VISIBLE);
+            public boolean onMenuItemSelected(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.action_add:
+                        Intent toAddLocation = new Intent(MainActivity.this, AddMapsActivity.class);
+
+                        startActivity(toAddLocation);
+                        Toast.makeText(MainActivity.this, "Add Clicked", Toast.LENGTH_LONG).show();
+                        return true;
+                    case R.id.action_current:
+                        Toast.makeText(MainActivity.this, "Current Clicked", Toast.LENGTH_LONG).show();
+                        return true;
+                }
+                return false;
             }
         });
-
-        fabCollaps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fabExpand.animate().rotationBy(-180);
-                fabAdd.animate().translationY(0);
-                fabRefresh.animate().translationY(0);
-
-                Log.d("Fab", "open");
-                fabCollaps.setVisibility(View.GONE);
-                fabExpand.setVisibility(View.VISIBLE);
-            }
-        });
-
-        fabAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("Fab", "Fab 1");
-            }
-        });
-        fabRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("Fab", "Fab 2");
-            }
-        });
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -136,23 +110,17 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.tab_MapLocation:
                     switchToListMarkerFragmen();
-                    fabExpand.setVisibility(View.VISIBLE);
                     action_search.setVisible(true);
+                    fabSpeedDial.setVisibility(View.VISIBLE);
                     return true;
                 case R.id.tab_ListLocation:
                     switchToListDataFragment();
-                    fabExpand.setVisibility(View.VISIBLE);
                     action_search.setVisible(true);
+                    fabSpeedDial.setVisibility(View.VISIBLE);
                     return true;
                 case R.id.tab_Info:
                     switchToInfoFragmen();
-                    fabAdd.setAnimation(null);
-                    fabRefresh.setAnimation(null);
-                    fabExpand.setVisibility(View.GONE);
-                    fabCollaps.setVisibility(View.GONE);
-                    fabAdd.setVisibility(View.INVISIBLE);
-                    fabRefresh.setVisibility(View.INVISIBLE);
-
+                    fabSpeedDial.setVisibility(View.GONE);
                     action_search.setVisible(false);
                     if (searchView.isSearchOpen()) {
                         searchView.closeSearch();

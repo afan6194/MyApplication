@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_add"
+        android:orderInCategory="0"
+        android:icon="@drawable/ic_add"
+        android:title="@string/addLocation" />
+    <item
+        android:id="@+id/action_current"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_refresh"
+        android:title="@string/currentLocation"/>
+</menu>

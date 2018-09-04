@@ -15,5 +15,8 @@
         <item>Ruby</item>
         <item>JavaScript</item>
     </string-array>
+    <string name="addLocation">Add Location</string>
+    <string name="currentLocation">Current Location</string>
+    <string name="title_activity_add_maps">Add Location</string>
 
 </resources>

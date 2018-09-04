@@ -40,71 +40,27 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="bottom|end">
+            android:padding="16dp">
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabRefresh"
-                android:layout_marginBottom="20dp"
+            <io.github.yavski.fabspeeddial.FabSpeedDial
+                android:id="@+id/fabCollapse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/colorFabRefresh"
-                android:visibility="invisible"
-                app:elevation="6dp"
-                app:fabSize="mini"
-                app:pressedTranslationZ="12dp"
-                app:rippleColor="@color/colorFabRefreshRipple"
-                app:srcCompat="@drawable/ic_refresh" />
+                android:layout_gravity="bottom|end"
+                app:fabDrawable="@drawable/ic_expand"
+                android:animateLayoutChanges="true"
+                app:fabGravity="bottom_end"
+                app:fabMenu="@menu/floating_menu"
+                app:fabBackgroundTint="@color/fabCLolor"
+                app:miniFabBackgroundTintList="@array/fab_menu_item_colors"
+                app:miniFabTitleTextColorList="@array/fab_menu_item_colors"
+                app:miniFabTitleTextColor="?attr/colorPrimaryDark" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabAdd"
-                android:layout_marginBottom="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/colorFabAdd"
-                android:src="@drawable/ic_add"
-                android:visibility="invisible"
-                app:elevation="6dp"
-                app:fabSize="mini"
-                app:pressedTranslationZ="12dp"
-                app:rippleColor="@color/colorFabAddRipple" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabCollaps"
-                android:layout_marginBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/fabCLolor"
-                android:src="@drawable/ic_collaps"
-                android:visibility="invisible"
-                app:elevation="6dp"
-                app:fabSize="normal"
-                app:pressedTranslationZ="12dp"
-                app:rippleColor="@color/fabRippleCLolor" />
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabExpand"
-                android:layout_marginBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/fabCLolor"
-                android:src="@drawable/ic_expand"
-                app:elevation="6dp"
-                app:fabSize="normal"
-                app:pressedTranslationZ="12dp"
-                app:rippleColor="@color/fabRippleCLolor" />
-        </RelativeLayout>
+        </FrameLayout>
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
