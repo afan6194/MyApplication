@@ -1,13 +1,31 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.a.dev.MyApplication.ListDataFragment">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="match_parent" />
+    <io.github.yavski.fabspeeddial.FabSpeedDial
+        android:background="@color/colorTransBg"
+        android:id="@+id/fabCollapse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:animateLayoutChanges="true"
+        app:fabBackgroundTint="@color/fabCLolor"
+        app:fabDrawable="@drawable/ic_expand"
+        app:fabGravity="bottom_end"
+        app:fabMenu="@menu/floating_menu"
+        app:miniFabDrawableTint="#fff"
+        app:miniFabBackgroundTintList="@array/fab_menu_item_colors"
+        app:miniFabTitleTextColor="?attr/colorPrimaryDark"
+        app:miniFabTitleTextColorList="@array/fab_menu_item_colors" />
+</RelativeLayout>
 
-</FrameLayout>

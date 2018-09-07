@@ -40,27 +40,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
-
-            <io.github.yavski.fabspeeddial.FabSpeedDial
-                android:id="@+id/fabCollapse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                app:fabDrawable="@drawable/ic_expand"
-                android:animateLayoutChanges="true"
-                app:fabGravity="bottom_end"
-                app:fabMenu="@menu/floating_menu"
-                app:fabBackgroundTint="@color/fabCLolor"
-                app:miniFabBackgroundTintList="@array/fab_menu_item_colors"
-                app:miniFabTitleTextColorList="@array/fab_menu_item_colors"
-                app:miniFabTitleTextColor="?attr/colorPrimaryDark" />
-
-        </FrameLayout>
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView

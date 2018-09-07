@@ -2,12 +2,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.a.dev.MyApplication.ListMarkerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <io.github.yavski.fabspeeddial.FabSpeedDial
+        android:background="@color/colorTransBg"
+        android:id="@+id/fabCollapse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:animateLayoutChanges="true"
+        app:fabBackgroundTint="@color/fabCLolor"
+        app:fabDrawable="@drawable/ic_expand"
+        app:fabGravity="bottom_end"
+        app:fabMenu="@menu/floating_menu"
+        app:miniFabDrawableTint="#fff"
+        app:miniFabBackgroundTintList="@array/fab_menu_item_colors"
+        app:miniFabTitleTextColor="?attr/colorPrimaryDark"
+        app:miniFabTitleTextColorList="@array/fab_menu_item_colors" />
 
 </FrameLayout>

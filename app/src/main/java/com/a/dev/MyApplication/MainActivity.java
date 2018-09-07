@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem action_search;
     private FrameLayout fragment_container;
     private MaterialSearchView searchView;
-    private FabSpeedDial fabSpeedDial;
+    //private FabSpeedDial fabSpeedDial;
 
 
     @Override
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragment_container = findViewById(R.id.fragment_container);
         searchView = findViewById(R.id.searchView);
-        fabSpeedDial = findViewById(R.id.fabCollapse);
+        //fabSpeedDial = findViewById(R.id.fabCollapse);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         });
         searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
 
-        fabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
+        /*fabSpeedDial.setMenuListener(new SimpleMenuListenerAdapter() {
             @Override
             public boolean onMenuItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        });*/
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -111,16 +111,16 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.tab_MapLocation:
                     switchToListMarkerFragmen();
                     action_search.setVisible(true);
-                    fabSpeedDial.setVisibility(View.VISIBLE);
+                    //fabSpeedDial.setVisibility(View.VISIBLE);
                     return true;
                 case R.id.tab_ListLocation:
                     switchToListDataFragment();
                     action_search.setVisible(true);
-                    fabSpeedDial.setVisibility(View.VISIBLE);
+                    //fabSpeedDial.setVisibility(View.VISIBLE);
                     return true;
                 case R.id.tab_Info:
                     switchToInfoFragmen();
-                    fabSpeedDial.setVisibility(View.GONE);
+                    //fabSpeedDial.setVisibility(View.GONE);
                     action_search.setVisible(false);
                     if (searchView.isSearchOpen()) {
                         searchView.closeSearch();
